@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&display=swap');
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -13,7 +16,16 @@
     --foreground: #ededed;
   }
 }
-
+.playwrite-in-font{
+  font-family: "Playwrite IN", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.hero-text{
+  font-size: 20rem;
+  color: white;
+}
 body {
   color: var(--foreground);
   background: var(--background);
