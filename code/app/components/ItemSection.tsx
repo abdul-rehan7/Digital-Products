@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ItemSection() {
   return (
-    <div>
+    <div className="py-[4rem]">
       <div className="text-xl  text-center p-6 flex justify-between">
         <p>See What&apos;s New</p>
         <p className="underline">Shop Now</p>
