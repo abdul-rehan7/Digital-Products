@@ -4,7 +4,7 @@ export default function ItemSection() {
   return (
     <div>
       <div className="text-xl  text-center p-6 flex justify-between">
-        <p>See What's New</p>
+        <p>See What&apos;s New</p>
         <p className="underline">Shop Now</p>
       </div>
       <div className="grid grid-cols-4 p-4 gap-4">
