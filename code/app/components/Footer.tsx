@@ -1,5 +1,6 @@
 import React from "react";
-import { FaLocationArrow } from "react-icons/fa6";
+import { MdArrowOutward } from "react-icons/md";
+import { MdArrowForward } from "react-icons/md";
 
 export default function Footer() {
   return (
@@ -7,8 +8,8 @@ export default function Footer() {
       <div className="pb-[6rem]">
         <div className=" h-[40vh] flex items-center justify-end px-12 ">
           <p className=" flex text-7xl border-b-2 border-black p-4">
-            Subscribe Us&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-            <FaLocationArrow className="text-white bg-black p-3 rounded-full" />
+            Subscribe Us&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+            <MdArrowOutward className="text-white bg-black p-3 rounded-full" />
           </p>
         </div>
         <div className="flex justify-around p-2">
