@@ -22,6 +22,12 @@
   font-weight: 300;
   font-style: normal;
 }
+.playwrite-in-font-b{
+  font-family: "Playwrite IN", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 .hero-text{
   font-size: 20rem;
   color: white;
