@@ -7,9 +7,9 @@ export default function Footer() {
     <>
       <div className="pb-[6rem]">
         <div className=" h-[40vh] flex items-center justify-end px-12 ">
-          <p className=" flex text-7xl border-b-2 border-black p-4">
+          <p className=" flex md:text-7xl text-xl border-b-2 items-center border-black p-4">
             Subscribe Us&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-            <MdArrowOutward className="text-white bg-black p-3 rounded-full" />
+            <MdArrowOutward className="text-white bg-black md:p-3 p-1 rounded-full" />
           </p>
         </div>
         <div className="flex justify-around p-2">

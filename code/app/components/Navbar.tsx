@@ -5,7 +5,7 @@ export default function Navbar() {
     <div className='fixed flex justify-between top-0 w-full text-white p-4'>
       <span>Web logo</span>
       <span>
-        <ul className='flex'>
+        <ul className='md:flex hidden'>
           <li className='mx-2'>Home</li>
           <li className='mx-2'>About</li>
           <li className='mx-2'>Contact</li>
