@@ -3,10 +3,12 @@ import axios from "axios";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
+
 // Load environment variables from .env.local
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
+
 // Create Sanity client
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -15,6 +17,8 @@ const client = createClient({
   token: process.env.SANITY_API_TOKEN,
   apiVersion: "2021-08-31",
 });
+
+// Function to upload images to Sanity
 async function uploadImageToSanity(imageUrl) {
   try {
     console.log(`Uploading image: ${imageUrl}`);
@@ -30,29 +34,52 @@ async function uploadImageToSanity(imageUrl) {
     return null;
   }
 }
+
+// Main function to import data
 async function importData() {
   try {
-    console.log("migrating data please wait...");
-    // API endpoint containing car data
+    console.log("Migrating data, please wait...");
+    
     const response = await axios.get(
       "https://my-custom-api.vercel.app/api/products"
     );
-    const products = response.data.data;
-    console.log("products ==>> ", products);
+    
+    // Check the structure of the response and log it
+    const products = response.data?.data || response.data;
+    
+    if (!Array.isArray(products)) {
+      throw new Error("Products data is not an array. Check the API response structure.");
+    }
+    
+    console.log("Products fetched:", products);
+    
+
     for (const product of products) {
       let imageRef = null;
+
+      // Upload image if exists
       if (product.image) {
         imageRef = await uploadImageToSanity(product.image);
       }
+
+      // Prepare Sanity product object
       const sanityProduct = {
         _type: "product",
         productName: product.productName,
+        description: product.description,
         category: product.category,
         price: product.price,
-        inventory: product.inventory,
-        colors: product.colors || [], // Optional, as per your schema
-        status: product.status,
-        description: product.description,
+        discountPercentage: product.discountPercentage,
+        priceWithoutDiscount: product.priceWithoutDiscount,
+        rating: product.rating,
+        ratingCount: product.ratingCount,
+        tags: product.tags || [],
+        features: product.features || [],
+        compatibility: product.compatibility,
+        supportedPlatforms: product.supportedPlatforms || [],
+        fileSize: product.fileSize,
+        demoUrl: product.demoUrl,
+        downloadableFiles: product.downloadableFiles || [],
         image: imageRef
           ? {
               _type: "image",
@@ -63,11 +90,16 @@ async function importData() {
             }
           : undefined,
       };
+
+      // Create document in Sanity
       await client.create(sanityProduct);
     }
+
     console.log("Data migrated successfully!");
   } catch (error) {
-    console.error("Error in migrating data ==>> ", error);
+    console.error("Error in migrating data:", error);
   }
 }
+
+// Run the import function
 importData();
