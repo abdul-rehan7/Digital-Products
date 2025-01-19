@@ -4,7 +4,7 @@ const client = createClient({
   projectId: 'auf2vsuj', // Replace with your project ID
   dataset: 'production',     // Replace with your dataset name
   useCdn: false,
-  token:process.env.NEW_SANITY_TOKEN              // Optional: Set to false for real-time data
+      
 });
 
 const deleteDocuments = async () => {
