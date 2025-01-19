@@ -1,7 +1,13 @@
 import React from "react";
-import Image from "next/image";
 import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+ 
+interface productItem{
+  _id: string,
+  productName: string;
+  description: string;
+  price: number;
+  image: string;
+}
 
 export default async function ItemSection() {
 
@@ -15,7 +21,7 @@ export default async function ItemSection() {
         <p className="underline">Shop Now</p>
       </div>
       <div className="grid md:grid-cols-4 grid-cols-1 p-4 gap-4">
-        {data.map((item: any) => (
+        {data.map((item:productItem) => (
          
           <div key={item._id} className="flex flex-col space-y-2 card bg-gray-200 p-4 rounded-lg">
             <img src={`${item.image}`} alt="Error Loading Image" />

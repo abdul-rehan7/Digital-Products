@@ -1,6 +1,5 @@
 import React from "react";
 import { MdArrowOutward } from "react-icons/md";
-import { MdArrowForward } from "react-icons/md";
 
 export default function Footer() {
   return (
