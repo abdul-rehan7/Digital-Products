@@ -1,4 +1,5 @@
 import React from 'react'
+import { IoIosCart } from "react-icons/io";
 
 export default function Navbar() {
   return (
@@ -13,7 +14,7 @@ export default function Navbar() {
           <li className='mx-2'>Contact</li>
         </ul>
       </span>
-      <span>Cart Icon</span>
+      <span><IoIosCart className='text-xl'/></span>
     </div>
   )
 }
