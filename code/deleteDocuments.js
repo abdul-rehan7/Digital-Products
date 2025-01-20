@@ -2,9 +2,9 @@ const { createClient } = require('@sanity/client');
 
 const client = createClient({
   projectId: 'auf2vsuj', // Replace with your project ID
-  dataset:  process.env.NEXT_PUBLIC_SANITY_DATASET,     // Replace with your dataset name
+  dataset:  "production",     // Replace with your dataset name
   useCdn: false,
-  token: process.env.SANITY_NEW_API,
+  token: "skDc6q065raxQbJt5VvYUTby01nrtPP9t1b4kuc5NDdpdVS5wJ6vyE4U61OnVKTXF49Uo9ZjzRQcuw1ngTeyCFqK55sQrGfpRqHGsTR1B6Nj3kM0y2ynC460JJZpPqOFVnXdLY6a4iM4Rvk3OHNxb23CSZ3oPLgxRUexVNz0WdTthQS5QM6Z",
       
 });
 
