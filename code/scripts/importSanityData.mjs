@@ -66,6 +66,7 @@ async function importData() {
       const sanityProduct = {
         id: product.id,
         _type: "product",
+        imageUrl:product.imageUrl,
         productName: product.productName,
         description: product.description,
         category: product.category,

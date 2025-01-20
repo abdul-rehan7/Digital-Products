@@ -26,7 +26,7 @@ export const productSchema = {
     {
       name: 'imageUrl',
       title: 'Image URL',
-      type: 'url',
+      type: 'string',
     }
   ]
 }
