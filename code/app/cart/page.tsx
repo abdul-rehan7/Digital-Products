@@ -16,9 +16,9 @@ export default function CartPage() {
           {cart.map((item) => (
             <div
               key={item.id}
-              className="flex text-[0.5rem] justify-between items-center border p-2 rounded mb-2"
+              className="flex md:text-lg text-[0.5rem] justify-between items-center border p-2 rounded mb-2"
             >
-              <img src={item.imageUrl} alt={item.productName} className="w-10" />
+              <img src={item.imageUrl} alt={item.productName} className="w-10 md:w-16" />
               <p className="font-semibold">{item.productName}</p>
               <p>Quantity: {item.quantity}</p>
               <button
@@ -30,7 +30,7 @@ export default function CartPage() {
             </div>
           ))}
           <button
-            className="bg-blue-500 active:bg-blue-800 text-[.7rem] my-4 text-white p-2 rounded hover:bg-blue-600"
+            className="bg-blue-500 active:bg-blue-800 md:text-lg md:px-4 text-[.7rem] my-4 text-white p-2 rounded hover:bg-blue-600"
             onClick={clearCart}
           >
             Clear Cart
