@@ -14,7 +14,7 @@ export default async function page(props: ProductPageProps) {
   console.log(slug);
 
   const data = await client.fetch(
-    `*[id == ${slug}]{id,_id, productName, description, price, imageUrl}`
+    `*[id == ${slug}]`
   );
   console.log("I AM THE DATA");
   console.log(data);
@@ -35,13 +35,19 @@ export default async function page(props: ProductPageProps) {
           <img src={data[0].imageUrl} alt="Error Loading Image" />
         </div>
         {/* Right Side */}
-        <div className="p-4 lg:w-[50vw] w-[90vw] flex flex-col space-y-4">
+       <div className="flex flex-col justify-evenly">
+       <div className="p-4 lg:w-[50vw] w-[90vw] flex flex-col space-y-4">
           <p className="lg:text-4xl text-lg font-bold">{data[0].productName}</p>
           <p className="lg:text-xl text-sm leading-relaxed">{data[0].description}</p>
           <p className="text-xl text-green-600 font-bold leading-relaxed">
             Rs. {data[0].price}
           </p>
         </div>
+        <div className="p-4">
+        <button className="p-2 bg-blue-400 w-[10rem] text-black rounded-sm active:bg-blue-500"> Order Now</button>
+        </div>
+       </div>
+        
       </div>
     </div>
   );

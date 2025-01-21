@@ -25,7 +25,7 @@ export default function ItemSection() {
     const fetchData = async () => {
       try {
         const result: productItem[] = await client.fetch(
-          '*[_type == "product"]{id, _id, productName, description, price, imageUrl}'
+          '*[_type == "product"]'
         );
         console.log("Fetched Data:", result); // Log data for debugging
         setData(result);
@@ -37,19 +37,17 @@ export default function ItemSection() {
 
     fetchData();
   }, []);
-
   // Handle search input
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
-
     // Filter products based on the query
     const filtered = data.filter((item) =>
       item.productName.toLowerCase().includes(query)
     );
     setFilteredProducts(filtered);
   };
-
+ console.log(filteredProducts)
   return (
     <div className="md:py-[4rem] py-[1rem]">
       {/* Search Bar */}
