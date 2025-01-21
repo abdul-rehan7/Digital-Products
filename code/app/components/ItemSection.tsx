@@ -5,7 +5,6 @@ import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 import { useCart } from "@/app/context/CartContext";
 
-
 interface productItem {
   id: number;
   _id: string;
@@ -24,11 +23,16 @@ export default function ItemSection() {
   React.useEffect(() => {
     // Fetch products data on the client side
     const fetchData = async () => {
-      const result: productItem[] = await client.fetch(
-        '*[_type == "product"]{id,_id, productName, description, price, imageUrl}'
-      );
-      setData(result);
-      setFilteredProducts(result);
+      try {
+        const result: productItem[] = await client.fetch(
+          '*[_type == "product"]{id, _id, productName, description, price, imageUrl}'
+        );
+        console.log("Fetched Data:", result); // Log data for debugging
+        setData(result);
+        setFilteredProducts(result);
+      } catch (error) {
+        console.error("Error fetching products:", error); // Log errors
+      }
     };
 
     fetchData();
@@ -49,20 +53,17 @@ export default function ItemSection() {
   return (
     <div className="md:py-[4rem] py-[1rem]">
       {/* Search Bar */}
-     
-
-      {/* Heading Section */}
-      <div className="md:text-xl text-xs text-center  p-2 md:p-6 flex justify-between">
-        <p className=" flex items-center">See What&apos;s New</p>
-        <div className="p-4 ">
-        <input
-          type="text"
-          placeholder="Search for products..."
-          value={searchQuery}
-          onChange={handleSearch}
-          className="md:w-[18rem] w-[45vw]  p-2 border border-black rounded-sm text-xs md:text-sm"
-        />
-      </div>
+      <div className="md:text-xl text-xs text-center p-2 md:p-6 flex justify-between">
+        <p className="flex items-center">See What&apos;s New</p>
+        <div className="p-4">
+          <input
+            type="text"
+            placeholder="Search for products..."
+            value={searchQuery}
+            onChange={handleSearch}
+            className="md:w-[18rem] w-[45vw] p-2 border border-black rounded-sm text-xs md:text-sm"
+          />
+        </div>
       </div>
 
       {/* Products Grid */}
@@ -84,19 +85,19 @@ export default function ItemSection() {
                 View Product
               </Link>
               <button
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-            onClick={() =>
-              addToCart({
-                id: item.id,
-                productName: item.productName,
-                price: item.price,
-                imageUrl: item.imageUrl,
-                quantity: 1,
-              })
-            }
-          >
-            Add to Cart
-          </button>
+                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                onClick={() =>
+                  addToCart({
+                    id: item.id,
+                    productName: item.productName,
+                    price: item.price,
+                    imageUrl: item.imageUrl,
+                    quantity: 1,
+                  })
+                }
+              >
+                Add to Cart
+              </button>
             </div>
           ))
         ) : (
