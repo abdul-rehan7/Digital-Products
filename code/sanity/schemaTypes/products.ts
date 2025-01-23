@@ -14,6 +14,11 @@ export const productSchema = {
       type: 'string',
     },
     {
+      name: 'rating',
+      title: 'Rating',
+      type: 'number',
+    },
+    {
       name: 'price',
       title: 'Price',
       type: 'number',

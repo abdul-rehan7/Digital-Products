@@ -4,12 +4,15 @@ import React, { useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 import { useCart } from "@/app/context/CartContext";
+import { FaStar } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
 
 interface productItem {
   id: number;
   _id: string;
   productName: string;
   description: string;
+  rating: number;
   price: number;
   imageUrl: string;
 }
@@ -72,10 +75,21 @@ export default function ItemSection() {
               key={item._id}
               className="flex flex-col space-y-2 card bg-gray-200 p-4 rounded-lg"
             >
-              <img src={item.imageUrl} alt={item.productName} />
+              <img className="flex items-center justify-center  w-full lg:h-[18rem] h-[10rem]" src={item.imageUrl} alt={item.productName} />
               <p className="font-semibold text-lg">{item.productName}</p>
               <p className="text-sm">{item.description}</p>
-              <p className="text-green-500">Rs.&nbsp;{item.price}</p>
+              <p className="text-green-500">$&nbsp;{item.price}</p>
+              <p className="text-xl text-yellow-500 font-bold leading-relaxed inline-flex">
+                            {Array(5)
+                              .fill(null)
+                              .map((_, index) =>
+                                index < item.rating ? (
+                                  <FaStar key={index} />
+                                ) : (
+                                  <FaRegStar className="font-bold text-xl" key={index} />
+                                )
+                              )}
+                          </p>
               <Link
                 href={`/products/${item.id}`}
                 className="border-[2px] text-blue-400 border-blue-400 p-2 w-full text-center rounded-lg cursor-pointer hover:bg-blue-400 hover:text-white transition-all active:bg-blue-500"

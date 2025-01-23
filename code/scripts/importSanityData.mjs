@@ -70,6 +70,7 @@ async function importData() {
         productName: product.productName,
         description: product.description,
         category: product.category,
+        rating:product.rating,
         price: product.price,
         discountPercentage: product.discountPercentage,
         priceWithoutDiscount: product.priceWithoutDiscount,
