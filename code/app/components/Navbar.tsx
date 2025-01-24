@@ -25,7 +25,10 @@ export default function Navbar() {
           </Link>
         </ul>
       </span>
-      <div className="relative">
+      <div className="relative flex  items-center space-x-3">
+        <Link className="bg-black text-center w-[5rem] text-white p-2 rounded-md " href={"/login"}>
+        Login
+        </Link>
         <Link href={"/cart"}>
           <IoIosCart className="text-2xl mr-2" />
         </Link>
