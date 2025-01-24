@@ -17,10 +17,10 @@ export default function Navbar() {
           <Link href={"/"} className="mx-2">
             Home
           </Link>
-          <Link href={""} className="mx-2">
+          <Link href={"/about"} className="mx-2">
             About
           </Link>
-          <Link href={""} className="mx-2">
+          <Link href={"/contact"} className="mx-2">
             Contact
           </Link>
         </ul>

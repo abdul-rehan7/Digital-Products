@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useCart } from "@/app/context/CartContext";
 import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
+import Toast from "./Toast";
 
 interface productItem {
   id: number;
@@ -50,7 +51,7 @@ export default function ItemSection() {
     );
     setFilteredProducts(filtered);
   };
- console.log(filteredProducts)
+  console.log(filteredProducts);
   return (
     <div className="md:py-[4rem] py-[1rem]">
       {/* Search Bar */}
@@ -75,21 +76,25 @@ export default function ItemSection() {
               key={item._id}
               className="flex flex-col space-y-2 card bg-gray-200 p-4 rounded-lg"
             >
-              <img className="flex items-center justify-center  w-full lg:h-[18rem] h-[10rem]" src={item.imageUrl} alt={item.productName} />
+              <img
+                className="flex items-center justify-center  w-full lg:h-[18rem] h-[10rem]"
+                src={item.imageUrl}
+                alt={item.productName}
+              />
               <p className="font-semibold text-lg">{item.productName}</p>
               <p className="text-sm">{item.description}</p>
               <p className="text-green-500">$&nbsp;{item.price}</p>
               <p className="text-xl text-yellow-500 font-bold leading-relaxed inline-flex">
-                            {Array(5)
-                              .fill(null)
-                              .map((_, index) =>
-                                index < item.rating ? (
-                                  <FaStar key={index} />
-                                ) : (
-                                  <FaRegStar className="font-bold text-xl" key={index} />
-                                )
-                              )}
-                          </p>
+                {Array(5)
+                  .fill(null)
+                  .map((_, index) =>
+                    index < item.rating ? (
+                      <FaStar key={index} />
+                    ) : (
+                      <FaRegStar className="font-bold text-xl" key={index} />
+                    )
+                  )}
+              </p>
               <Link
                 href={`/products/${item.id}`}
                 className="border-[2px] text-blue-400 border-blue-400 p-2 w-full text-center rounded-lg cursor-pointer hover:bg-blue-400 hover:text-white transition-all active:bg-blue-500"
@@ -97,7 +102,6 @@ export default function ItemSection() {
                 View Product
               </Link>
               <button
-                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
                 onClick={() =>
                   addToCart({
                     id: item.id,
@@ -108,12 +112,14 @@ export default function ItemSection() {
                   })
                 }
               >
-                Add to Cart
+                <Toast />
               </button>
             </div>
           ))
         ) : (
-          <p className="text-center col-span-4 text-red-500">No products found.</p>
+          <p className="text-center col-span-4 text-red-500">
+            No products found.
+          </p>
         )}
       </div>
     </div>
