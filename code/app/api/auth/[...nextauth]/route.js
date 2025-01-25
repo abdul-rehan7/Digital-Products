@@ -16,11 +16,13 @@ const authOptions = NextAuth({
       },
       async authorize(credentials) {
         let user = null;
-        user = {
-          id: "1",
-          name: "admin",
-          email: "abdulrehan0317@gmail.com",
-        };
+        user = 
+          {
+            id: "2",
+            name: "user",
+            email: "abdulrehan0318@gmail.com",
+          }
+        
         if (!user) {
           console.log("Invalid User");
           return null;
