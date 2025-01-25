@@ -14,19 +14,19 @@ const authOptions = NextAuth({
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      // async authorize(credentials) {
-      //   let user = null;
-      //   user = {
-      //     id: "1",
-      //     name: "admin",
-      //     email: "abdulrehan0317@gmail.com",
-      //   };
-      //   if (!user) {
-      //     console.log("Invalid User");
-      //     return null;
-      //   }
-      //   return user;
-      // },
+      async authorize(credentials) {
+        let user = null;
+        user = {
+          id: "1",
+          name: "admin",
+          email: "abdulrehan0317@gmail.com",
+        };
+        if (!user) {
+          console.log("Invalid User");
+          return null;
+        }
+        return user;
+      },
     }),
 
     // ...add more providers here
