@@ -24,7 +24,8 @@ export default async function handler(req, res) {
       const result = await sanityClient.create(orderDoc);
       res.status(201).json(result);
     } catch (error) {
-      res.status(500).json({ error: 'Failed to create order' });
+      console.error('Error creating order:', error); // Log the error for debugging
+      res.status(500).json({ error: 'An error occurred while creating the order', details: error.message });
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });
