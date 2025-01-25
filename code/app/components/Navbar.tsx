@@ -5,13 +5,17 @@ import React from "react";
 import { IoIosCart } from "react-icons/io";
 import { useCart } from "@/app/context/CartContext"; // Import the cart context
 import { HiMiniHome } from "react-icons/hi2";
-
+import { useSession } from "next-auth/react";
 export default function Navbar() {
   const { cart } = useCart(); // Access the cart from context
+  const { data: session } = useSession();
+  console.log(session);
 
   return (
     <div className="fixed flex justify-between top-0 w-full text-black p-4 bg-[#d1d1d1] bg-opacity-50 backdrop-blur-lg">
-      <Link className="text-2xl" href={'/'}><HiMiniHome/></Link>
+      <Link className="text-2xl" href={"/"}>
+        <HiMiniHome />
+      </Link>
       <span>
         <ul className="md:flex hidden text-black">
           <Link href={"/"} className="mx-2">
@@ -26,9 +30,22 @@ export default function Navbar() {
         </ul>
       </span>
       <div className="relative flex  items-center space-x-3">
-        <Link className="bg-black text-center w-[5rem] text-white p-2 rounded-md " href={"/login"}>
-        Login
-        </Link>
+        {session ? (
+          <Link
+            className="bg-black text-center w-[5rem] text-white p-2 rounded-md "
+            href={"/login"}
+          >
+            Sign Out
+          </Link>
+        ) : (
+          <Link
+            className="bg-black text-center w-[5rem] text-white p-2 rounded-md "
+            href={"/login"}
+          >
+            Login
+          </Link>
+        )}
+
         <Link href={"/cart"}>
           <IoIosCart className="text-2xl mr-2" />
         </Link>

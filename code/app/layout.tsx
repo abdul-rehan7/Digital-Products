@@ -29,10 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <SessionWrapper>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+          >
+          <SessionWrapper>
           {" "}
           <CartProvider>
             <Navbar />
@@ -40,8 +40,8 @@ export default function RootLayout({
 
             <Footer />
           </CartProvider>
-        </body>
       </SessionWrapper>
+        </body>
     </html>
   );
 }
