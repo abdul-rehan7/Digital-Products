@@ -1,45 +1,35 @@
 "use client";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
 
-export default function Component() {
-  const { data: session } = useSession();
-  if (session) {
-    return (
-      <>
-        <div className="flex justify-center flex-col items-center">
-          {session?.user ? (
-            <>
-              <p>Signed in as &nbsp; ➡️ &nbsp; Mail: {session.user.email}</p>
-              <p>Name: {session.user.name}</p>
-              <br />
-              <button
-                className="bg-black rounded-md text-white w-[7rem] p-3 hover:bg-transparent hover:text-black transition border-2 border-black active:bg-black active:text-gray-600 text-center"
-                onClick={() => signOut()}
-              >
-                Sign Out
-              </button>
-            </>
-          ) : (
-            <p>Loading session...</p>
-          )}
-        </div>
-      </>
-    );
-  }
+export default function SignInPage() {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    setFormData({ email, password });
+
+    // Optional: Perform sign-in with credentials
+    await signIn("credentials", { email, password });
+  };
+
   return (
-    <>
-      <div className="w-screen space-x-4 h-screen flex items-center justify-center bg-gray-200 ">
-        <button className="bg-white rounded-md text-black w-[9rem]  p-3 hover:bg-transparent hover:text-white transition border-2 border-white  active:bg-white active:text-gray-600 text-center ">
-          Not signed in?
-        </button>
+    <div>
+      <form className="p-8 py-20 bg-green-500" onSubmit={handleSignIn}>
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Sign In</button>
+      </form>
 
-        <button
-          className="bg-black rounded-md text-white w-[7rem]  p-3 hover:bg-transparent hover:text-black transition border-2 border-black  active:bg-black active:text-gray-600 text-center "
-          onClick={() => signIn()}
-        >
-          Sign In
-        </button>
-      </div>
-    </>
+      {formData.email && (
+        <div className="mt-4 p-4 bg-gray-200">
+          <p><strong>Email:</strong> {formData.email}</p>
+          <p><strong>Password:</strong> {formData.password}</p>
+        </div>
+      )}
+    </div>
   );
 }

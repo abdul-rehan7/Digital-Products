@@ -17,7 +17,6 @@ interface productItem {
   price: number;
   imageUrl: string;
 }
-
 export default function ItemSection() {
   const [data, setData] = useState<productItem[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -38,7 +37,6 @@ export default function ItemSection() {
         console.error("Error fetching products:", error); // Log errors
       }
     };
-
     fetchData();
   }, []);
   // Handle search input
