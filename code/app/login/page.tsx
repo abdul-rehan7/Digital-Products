@@ -1,14 +1,15 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { FormEvent } from "react"; // Import FormEvent
 
 export default function SignInPage() {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
-  const handleSignIn = async (e:any) => {
+  const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {  // Specify event type
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    const email = (e.target as HTMLFormElement).email.value; // Type casting for form elements
+    const password = (e.target as HTMLFormElement).password.value;
 
     setFormData({ email, password });
 
