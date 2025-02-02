@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function SignInPage() {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
-  const handleSignIn = async (e) => {
+  const handleSignIn = async (e:any) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
