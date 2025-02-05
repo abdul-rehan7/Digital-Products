@@ -12,7 +12,7 @@ export default function Navbar() {
   console.log(session);
 
   return (
-    <div className="fixed flex justify-between top-0 w-full text-black p-4 bg-[#d1d1d1] bg-opacity-50 backdrop-blur-lg">
+    <div className="fixed flex justify-between top-0 w-full text-black p-4 bg-[#ffffff]">
       <Link className="text-2xl" href={"/"}>
         <HiMiniHome />
       </Link>
@@ -30,21 +30,6 @@ export default function Navbar() {
         </ul>
       </span>
       <div className="relative flex  items-center space-x-3">
-        {session ? (
-          <Link
-            className="bg-black text-center w-[5rem] text-white p-2 rounded-md "
-            href={"/login"}
-          >
-            Sign Out
-          </Link>
-        ) : (
-          <Link
-            className="bg-black text-center w-[5rem] text-white p-2 rounded-md "
-            href={"/login"}
-          >
-            Login
-          </Link>
-        )}
 
         <Link href={"/cart"}>
           <IoIosCart className="text-2xl mr-2" />

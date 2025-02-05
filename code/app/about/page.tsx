@@ -15,7 +15,7 @@ export default function page() {
             assets, our curated selection empowers creators, professionals, and
             businesses to reach new heights. We are dedicated to delivering
             innovative and reliable digital products that enhance productivity
-            and creativity
+            and creativity.
           </p>
         </div>
         <div className=" bg-gray-100 p-8 text-justify lg  lg:p-6 space-y-6 text-lg lg:text-xl flex flex-col items-center lg:text-left justify-center">

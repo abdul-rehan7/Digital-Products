@@ -67,22 +67,22 @@ export default function ItemSection() {
       </div>
 
       {/* Products Grid */}
-      <div className="grid md:grid-cols-3 grid-cols-1 p-4 gap-4">
+      <div className="grid md:grid-cols-3 grid-cols-1 p-4  gap-6">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((item) => (
             <div
               key={item._id}
-              className="flex flex-col space-y-2 card bg-gray-200 p-4 rounded-lg"
+              className="flex flex-col space-y-2 card bg-gray-200 overflow-hidden  rounded-lg"
             >
               <img
                 className="flex items-center justify-center  w-full lg:h-[18rem] h-[10rem]"
                 src={item.imageUrl}
                 alt={item.productName}
               />
-              <p className="font-semibold text-lg">{item.productName}</p>
-              <p className="text-sm">{item.description}</p>
-              <p className="text-green-500">$&nbsp;{item.price}</p>
-              <p className="text-xl text-yellow-500 font-bold leading-relaxed inline-flex">
+              <p className="font-semibold px-4 text-lg">{item.productName}</p>
+              <p className="text-sm px-4">{item.description}</p>
+              <p className="text-green-500 px-4">$&nbsp;{item.price}</p>
+              <p className="text-xl text-yellow-500 px-4 font-bold leading-relaxed inline-flex">
                 {Array(5)
                   .fill(null)
                   .map((_, index) =>
@@ -95,7 +95,7 @@ export default function ItemSection() {
               </p>
               <Link
                 href={`/products/${item.id}`}
-                className="border-[2px] text-blue-400 border-blue-400 p-2 w-full text-center rounded-lg cursor-pointer hover:bg-blue-400 hover:text-white transition-all active:bg-blue-500"
+                className="border-[2px]  text-blue-400  mx-auto w-[60%] text-center rounded-lg cursor-pointer transition-all "
               >
                 View Product
               </Link>

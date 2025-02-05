@@ -16,7 +16,7 @@ export default function Toast() {
   return (
     <div>
       <button
-        className="bg-blue-500 text-white w-full py-2 px-4 rounded hover:bg-blue-600"
+        className="bg-blue-500 mx-4 my-2 w-[60%] text-white  py-2 px-4 rounded hover:bg-blue-600"
         onClick={notify}
       >
         Add to Cart
